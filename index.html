@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>El Tesoro de Mamá | Regalo de Cumpleaños</title>
+
+  <!-- Tipografías de Google Fonts: Playfair Display (Serif) & Inter (Sans-serif) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Componente Web Oficial de Google para Visualización 3D -->
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Fondo orgánico con gradiente de acuarela -->
+  <div class="bg-watercolor" aria-hidden="true"></div>
+
+  <!-- 1. PORTADA / HERO -->
+  <header class="hero-section">
+    <div class="hero-eyebrow">✦ UN TESORO HECHO CON AMOR ✦</div>
+    <h1 class="hero-title">El Tesoro de Mamá</h1>
+    <p class="hero-subtitle">
+      “Recuerdos, voces y pequeñas cosas que cuentan tu historia.”
+    </p>
+    <p class="hero-subtext">
+      Un regalo hecho para volver a esos momentos que siempre tendrán un lugar especial en nuestra familia.
+    </p>
+    <a href="#chest-section" class="btn-primary hero-cta">
+      <span>Comenzar el recorrido</span>
+      <span class="arrow-icon" aria-hidden="true">↓</span>
+    </a>
+  </header>
+
+  <main>
+    <!-- 2. PIEZA CENTRAL — EL COFRE DORADO -->
+    <section id="chest-section" class="chest-section" aria-label="El Cofre Dorado de Recuerdos">
+      <div class="section-badge">EL GRAN TESORO · 01</div>
+      <h2 class="section-title">Un tesoro esperando ser descubierto</h2>
+      <p class="section-desc">“Dentro de este cofre hay algo que el tiempo nunca podrá borrar.”</p>
+
+      <div class="chest-card">
+        <div class="chest-glow" aria-hidden="true"></div>
+
+        <div class="chest-plaque" aria-hidden="true">
+          <span class="plaque-tag">EL CORAZÓN DEL TESORO</span>
+          <span class="plaque-title">El Cofre de Mamá</span>
+          <span class="plaque-sub">“Donde viven nuestros recuerdos”</span>
+        </div>
+
+        <div class="model-wrapper">
+          <model-viewer 
+            id="chest-viewer"
+            src="assets/3d/cofre_dorado.glb" 
+            alt="Cofre dorado interactivo con recuerdos de mamá"
+            auto-rotate 
+            rotation-per-second="10deg"
+            camera-controls 
+            shadow-intensity="1.2" 
+            shadow-softness="0.8"
+            exposure="1.0"
+            touch-action="pan-y">
+            
+            <!-- Fallback visual si el archivo GLB no existe -->
+            <div class="model-fallback" slot="poster">
+              <div class="fallback-icon" aria-hidden="true">🎁</div>
+              <p class="fallback-text">El Cofre Dorado de Mamá</p>
+            </div>
+          </model-viewer>
+        </div>
+
+        <div class="chest-actions">
+          <button id="btn-open-chest" class="btn-gold">
+            <span class="btn-sparkle" aria-hidden="true">✨</span>
+            <span>Abrir el cofre</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. EL GRAN REVELADO Y LLUVIA DE RECUERDOS -->
+    <section id="reveal-section" class="reveal-section hidden" aria-live="polite">
+      <div class="narrative-box">
+        <p class="narrative-line-1">“Hay regalos que no caben dentro de una caja.”</p>
+        <p class="narrative-line-2">“Este está hecho de voces, fotografías y personas que te quieren.”</p>
+      </div>
+
+      <!-- Escenario para fotografías flotantes emergiendo del cofre -->
+      <div id="floating-stage" class="floating-stage" aria-hidden="true"></div>
+    </section>
+
+    <!-- 4. VISOR SECUENCIAL DE FELICITACIONES -->
+    <section id="memories-section" class="memories-section hidden" aria-label="Felicitaciones familiares">
+      <div class="section-header">
+        <span class="section-eyebrow">VOCES Y RECUERDOS</span>
+        <h2>Felicitaciones de la Familia</h2>
+        <div class="gold-divider" aria-hidden="true">✦</div>
+      </div>
+
+      <div class="viewer-container">
+        <button id="btn-prev-memory" class="nav-arrow prev" aria-label="Ver felicitación anterior">‹</button>
+
+        <article id="active-memory-card" class="memory-card">
+          <!-- Renderizado dinámico vía app.js desde memories.json -->
+        </article>
+
+        <button id="btn-next-memory" class="nav-arrow next" aria-label="Ver siguiente felicitación">›</button>
+      </div>
+
+      <div class="viewer-pagination">
+        <span id="memory-counter" class="memory-counter">1 de 7</span>
+      </div>
+    </section>
+
+    <!-- 5. COLECCIÓN DE OBJETOS DE MAMÁ -->
+    <section class="objects-section" aria-label="Colección de objetos significativos">
+      <div class="section-header">
+        <span class="section-eyebrow">DETALLES ÚNICOS</span>
+        <h2>Pequeñas cosas que hablan de ti</h2>
+        <p class="section-subtitle">Objetos, gustos y pequeños detalles que también forman parte de lo que te hace única.</p>
+        <div class="gold-divider" aria-hidden="true">✦</div>
+      </div>
+
+      <div class="objects-grid">
+        <!-- Objeto 1: Álbum de recuerdos -->
+        <button class="object-card" data-object="album" aria-label="Ver detalle sobre el Álbum de recuerdos">
+          <div class="object-model-wrapper">
+            <model-viewer src="assets/3d/album.glb" alt="Álbum de recuerdos" auto-rotate touch-action="pan-y">
+              <div class="model-fallback" slot="poster">📖</div>
+            </model-viewer>
+          </div>
+          <span class="object-number">01</span>
+          <h3 class="object-title">Álbum de recuerdos</h3>
+        </button>
+
+        <!-- Objeto 2: Bastet -->
+        <button class="object-card" data-object="bastet" aria-label="Ver detalle sobre Bastet">
+          <div class="object-model-wrapper">
+            <model-viewer src="assets/3d/gato_egipcio.glb" alt="Estatua de Bastet" auto-rotate touch-action="pan-y">
+              <div class="model-fallback" slot="poster">📿</div>
+            </model-viewer>
+          </div>
+          <span class="object-number">02</span>
+          <h3 class="object-title">Bastet</h3>
+        </button>
+
+        <!-- Objeto 3: El caballo -->
+        <button class="object-card" data-object="caballo" aria-label="Ver detalle sobre El caballo">
+          <div class="object-model-wrapper">
+            <model-viewer src="assets/3d/caballo.glb" alt="Figura de caballo" auto-rotate touch-action="pan-y">
+              <div class="model-fallback" slot="poster">🐎</div>
+            </model-viewer>
+          </div>
+          <span class="object-number">03</span>
+          <h3 class="object-title">El caballo</h3>
+        </button>
+
+        <!-- Objeto 4: Los libros -->
+        <button class="object-card" data-object="libros" aria-label="Ver detalle sobre Los libros">
+          <div class="object-model-wrapper">
+            <model-viewer src="assets/3d/libros.glb" alt="Pila de libros antiguos" auto-rotate touch-action="pan-y">
+              <div class="model-fallback" slot="poster">📚</div>
+            </model-viewer>
+          </div>
+          <span class="object-number">04</span>
+          <h3 class="object-title">Los libros</h3>
+        </button>
+      </div>
+    </section>
+
+    <!-- 6. MENSAJE FINAL DE CIERRE -->
+    <section class="final-section" aria-label="Mensaje final de la familia">
+      <div class="final-card">
+        <span class="final-eyebrow">EL TESORO MÁS IMPORTANTE</span>
+        <h2 class="final-title">Eres tú.</h2>
+        <p class="final-body">
+          “Porque detrás de cada recuerdo, cada voz y cada momento, estás tú y todo lo que has sembrado en nuestra familia.”
+        </p>
+        <div class="final-divider" aria-hidden="true">✦ ✦ ✦</div>
+        <p class="final-greeting">Feliz cumpleaños, Mamá.</p>
+        <p class="final-signature">Con todo el amor de tu familia.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- DIÁLOGO / MODAL EXPANDIBLE PARA OBJETOS -->
+  <dialog id="object-dialog" class="object-dialog">
+    <div class="dialog-content">
+      <button id="dialog-close-btn" class="dialog-close" aria-label="Cerrar detalles del objeto">&times;</button>
+      <div id="dialog-body">
+        <!-- Inyectado dinámicamente mediante app.js -->
+      </div>
+    </div>
+  </dialog>
+
+  <footer class="main-footer">
+    <p>El Tesoro de Mamá &bull; Un regalo interactivo creado en familia</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

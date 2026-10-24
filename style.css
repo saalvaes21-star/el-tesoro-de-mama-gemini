@@ -1,0 +1,730 @@
+/* ==========================================================================
+   1. VARIABLES DE DISEÑO & IDENTIDAD VISUAL
+   ========================================================================== */
+:root {
+  --bg-cream: #fdf8f5;
+  --bg-card: #ffffff;
+  --primary-rose: #d47a85;
+  --primary-rose-dark: #b85f69;
+  --gold-champagne: #e2b96f;
+  --gold-light: #f9f1e1;
+  --gold-dark: #a67c2e;
+  --text-dark: #4a3e3d;
+  --text-muted: #7a6a69;
+  
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  
+  --shadow-soft: 0 12px 32px rgba(74, 62, 61, 0.06);
+  --shadow-hover: 0 18px 38px rgba(212, 122, 133, 0.16);
+  --radius-lg: 24px;
+  --radius-md: 16px;
+  --radius-sm: 10px;
+  --transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* RESETEO Y BASES */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-cream);
+  color: var(--text-dark);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* FONDO ORGANICO ACUARELA */
+.bg-watercolor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: 
+    radial-gradient(circle at 10% 15%, rgba(212, 122, 133, 0.08) 0%, transparent 45%),
+    radial-gradient(circle at 90% 85%, rgba(226, 185, 111, 0.12) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, var(--bg-cream) 0%, #faf3ee 100%);
+  z-index: -1;
+  pointer-events: none;
+}
+
+main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px 60px 20px;
+}
+
+/* ==========================================================================
+   2. HERO / PORTADA
+   ========================================================================== */
+.hero-section {
+  min-height: 82vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 60px 20px 40px 20px;
+}
+
+.hero-eyebrow {
+  color: var(--gold-dark);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+  background-color: var(--gold-light);
+  padding: 6px 18px;
+  border-radius: 50px;
+  border: 1px solid rgba(226, 185, 111, 0.4);
+}
+
+.hero-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.4rem, 5.5vw, 4rem);
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 16px;
+  line-height: 1.15;
+}
+
+.hero-subtitle {
+  font-family: var(--font-serif);
+  font-size: clamp(1.15rem, 2.8vw, 1.4rem);
+  color: var(--primary-rose-dark);
+  max-width: 650px;
+  font-style: italic;
+  margin-bottom: 12px;
+}
+
+.hero-subtext {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  max-width: 540px;
+  margin-bottom: 36px;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--primary-rose);
+  color: #ffffff;
+  padding: 14px 34px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.98rem;
+  box-shadow: 0 8px 22px rgba(212, 122, 133, 0.32);
+  transition: var(--transition);
+}
+
+.btn-primary:hover, .btn-primary:focus-visible {
+  background-color: var(--primary-rose-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(212, 122, 133, 0.42);
+}
+
+.arrow-icon {
+  font-size: 1.1rem;
+}
+
+/* ==========================================================================
+   3. PIEZA CENTRAL — EL COFRE DORADO
+   ========================================================================== */
+.chest-section {
+  padding: 50px 0 30px 0;
+  text-align: center;
+}
+
+.section-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--gold-dark);
+  margin-bottom: 8px;
+}
+
+.section-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  color: var(--text-dark);
+  margin-bottom: 8px;
+}
+
+.section-desc {
+  font-size: 0.98rem;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-bottom: 28px;
+}
+
+.chest-card {
+  position: relative;
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: 35px 20px 30px 20px;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(226, 185, 111, 0.3);
+  overflow: hidden;
+}
+
+.chest-glow {
+  position: absolute;
+  top: -40%;
+  left: -40%;
+  width: 180%;
+  height: 180%;
+  background: radial-gradient(circle, rgba(226, 185, 111, 0.14) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.chest-plaque {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(135deg, #ffffff 0%, var(--gold-light) 100%);
+  padding: 10px 24px;
+  border-radius: 12px;
+  border: 1px solid rgba(226, 185, 111, 0.5);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+  margin-bottom: 20px;
+}
+
+.plaque-tag {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--gold-dark);
+}
+
+.plaque-title {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.plaque-sub {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.model-wrapper {
+  width: 100%;
+  height: 340px;
+  position: relative;
+}
+
+model-viewer {
+  width: 100%;
+  height: 100%;
+}
+
+.model-fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--bg-cream);
+  color: var(--text-muted);
+  border-radius: var(--radius-md);
+  border: 2px dashed rgba(226, 185, 111, 0.4);
+}
+
+.fallback-icon {
+  font-size: 3.8rem;
+  margin-bottom: 8px;
+}
+
+.fallback-text {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  color: var(--text-dark);
+}
+
+.chest-actions {
+  margin-top: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.btn-gold {
+  background: linear-gradient(135deg, var(--gold-champagne) 0%, #c8953c 100%);
+  color: #ffffff;
+  border: none;
+  padding: 14px 36px;
+  border-radius: 50px;
+  font-size: 1.02rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 8px 22px rgba(226, 185, 111, 0.4);
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-gold:hover, .btn-gold:focus-visible {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 12px 28px rgba(226, 185, 111, 0.55);
+}
+
+/* ==========================================================================
+   4. EL GRAN REVELADO & FOTOS FLOTANTES
+   ========================================================================== */
+.reveal-section {
+  padding: 40px 0;
+  text-align: center;
+  position: relative;
+  min-height: 380px;
+}
+
+.narrative-box {
+  max-width: 620px;
+  margin: 0 auto 30px auto;
+}
+
+.narrative-line-1, .narrative-line-2 {
+  font-family: var(--font-serif);
+  font-size: clamp(1.2rem, 3vw, 1.55rem);
+  color: var(--text-dark);
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.narrative-line-2 {
+  color: var(--primary-rose-dark);
+  margin-top: 8px;
+  transition-delay: 1.1s;
+}
+
+.reveal-active .narrative-line-1,
+.reveal-active .narrative-line-2 {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.floating-stage {
+  position: relative;
+  height: 260px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.floating-photo {
+  position: absolute;
+  width: 105px;
+  height: 125px;
+  background: #ffffff;
+  padding: 6px 6px 18px 6px;
+  box-shadow: 0 10px 24px rgba(74, 62, 61, 0.12);
+  border-radius: 6px;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%) scale(0.2);
+  opacity: 0;
+  animation: floatEmergence 3.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.floating-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+@keyframes floatEmergence {
+  0% {
+    opacity: 0;
+    bottom: 0;
+    transform: translateX(-50%) scale(0.2) rotate(0deg);
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.95;
+    bottom: 70px;
+    transform: translateX(var(--target-x)) scale(1) rotate(var(--target-rot));
+  }
+}
+
+/* ==========================================================================
+   5. VISOR SECUENCIAL DE FELICITACIONES
+   ========================================================================== */
+.memories-section {
+  padding: 40px 0;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.section-eyebrow {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--primary-rose);
+}
+
+.section-header h2 {
+  font-family: var(--font-serif);
+  font-size: clamp(1.7rem, 3.8vw, 2.3rem);
+  color: var(--text-dark);
+}
+
+.section-subtitle {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.gold-divider {
+  color: var(--gold-champagne);
+  font-size: 0.9rem;
+  margin-top: 6px;
+}
+
+.viewer-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  position: relative;
+}
+
+.memory-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(0,0,0,0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.card-photo-wrapper {
+  width: 100%;
+  height: 270px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  position: relative;
+  background-color: var(--bg-cream);
+}
+
+.card-photo-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Etiqueta de Parentesco Separada del Nombre */
+.kinship-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: var(--primary-rose-dark);
+  background: var(--gold-light);
+  padding: 4px 12px;
+  border-radius: 20px;
+  display: inline-block;
+  margin-bottom: 4px;
+}
+
+.person-name {
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  color: var(--text-dark);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.card-message {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  font-style: italic;
+  line-height: 1.55;
+  margin-bottom: 16px;
+}
+
+/* Reproductor de Audio Personalizado Elegante */
+.custom-audio-player {
+  background: var(--bg-cream);
+  border-radius: 50px;
+  padding: 10px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid rgba(212, 122, 133, 0.25);
+}
+
+.btn-play-toggle {
+  background: var(--primary-rose);
+  color: #ffffff;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: var(--transition);
+}
+
+.btn-play-toggle:hover {
+  background: var(--primary-rose-dark);
+}
+
+.audio-text-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.audio-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.audio-status {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.nav-arrow {
+  background: var(--bg-card);
+  border: 1px solid rgba(0,0,0,0.06);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  font-size: 1.4rem;
+  color: var(--text-dark);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: var(--transition);
+}
+
+.nav-arrow:hover {
+  background: var(--primary-rose);
+  color: #ffffff;
+  border-color: var(--primary-rose);
+}
+
+.viewer-pagination {
+  text-align: center;
+  margin-top: 18px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   6. COLECCIÓN DE OBJETOS DE MAMÁ
+   ========================================================================== */
+.objects-section {
+  padding: 50px 0;
+}
+
+.objects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 20px;
+}
+
+.object-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(0,0,0,0.04);
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: var(--shadow-soft);
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.object-card:hover, .object-card:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+  border-color: rgba(212, 122, 133, 0.3);
+}
+
+.object-model-wrapper {
+  width: 100%;
+  height: 150px;
+  background: var(--bg-cream);
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+.object-number {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--gold-dark);
+  letter-spacing: 1px;
+}
+
+.object-title {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  color: var(--text-dark);
+}
+
+/* ==========================================================================
+   7. MENSAJE FINAL & DIÁLOGOS
+   ========================================================================== */
+.final-section {
+  padding: 50px 0 20px 0;
+  text-align: center;
+}
+
+.final-card {
+  background: linear-gradient(135deg, #ffffff 0%, #fefcfb 100%);
+  border-radius: var(--radius-lg);
+  padding: 45px 25px;
+  border: 1px solid rgba(226, 185, 111, 0.35);
+  box-shadow: var(--shadow-soft);
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.final-eyebrow {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--gold-dark);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.final-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+  color: var(--primary-rose-dark);
+  margin-bottom: 16px;
+}
+
+.final-body {
+  font-size: 1.02rem;
+  color: var(--text-dark);
+  line-height: 1.6;
+  max-width: 520px;
+  margin: 0 auto 20px auto;
+}
+
+.final-divider {
+  color: var(--gold-champagne);
+  font-size: 0.85rem;
+  margin-bottom: 20px;
+}
+
+.final-greeting {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.final-signature {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* Modal Dialógica */
+.object-dialog {
+  border: none;
+  border-radius: var(--radius-lg);
+  padding: 0;
+  max-width: 460px;
+  width: 90%;
+  margin: auto;
+  box-shadow: 0 20px 50px rgba(74, 62, 61, 0.22);
+  background: var(--bg-card);
+}
+
+.object-dialog::backdrop {
+  background: rgba(74, 62, 61, 0.38);
+  backdrop-filter: blur(4px);
+}
+
+.dialog-content {
+  padding: 30px 24px;
+  position: relative;
+}
+
+.dialog-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: var(--bg-cream);
+  border: none;
+  font-size: 1.4rem;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  color: var(--text-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-footer {
+  text-align: center;
+  padding: 30px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  border-top: 1px solid rgba(0,0,0,0.04);
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Responsividad Táctil */
+@media (max-width: 600px) {
+  .viewer-container {
+    position: relative;
+  }
+  
+  .nav-arrow {
+    position: absolute;
+    top: 38%;
+    z-index: 10;
+  }
+
+  .nav-arrow.prev { left: -8px; }
+  .nav-arrow.next { right: -8px; }
+}
